@@ -13,6 +13,22 @@ public class Registro {
     }
 
     public void registrarEstudiante(Estudiante estudiante){
+        ingresarDatosEstudiante(estudiante);
+        validarDatosEstudiante(estudiante);
+        if(!aprobado){
+            System.out.println("No se ha podido registrar");
+            return;
+        }
+        añadirAListaEstudiantes(estudiante);
+    }
+
+    public void añadirAListaEstudiantes(Estudiante estudiante) {
+        listaEstudiantesRegistrados.add(estudiante);
+        System.out.println("¡¡¡ Usted ha sido registrado correctamente !!!");
+        estudiante.darBienvenida();
+    }
+
+    public void ingresarDatosEstudiante(Estudiante estudiante) {
         Scanner sca=new Scanner(System.in);
         System.out.println("Ingrese su nombre: ");
         String aux = sca.nextLine();
@@ -26,37 +42,22 @@ public class Registro {
         System.out.println("Ingrese una contraseña para su usuario: ");
         aux = sca.nextLine();
         estudiante.setContraseña(aux);
-        validarDatosEstudiante(estudiante);
-        if(!aprobado){
-            System.out.println("No se ha podido registrar");
-            return;
-        }
-        listaEstudiantesRegistrados.add(estudiante);
-        System.out.println("¡¡¡ Usted ha sido registrado correctamente !!!");
-        estudiante.darBienvenida();
     }
 
     public boolean validarDatosEstudiante(Estudiante estudiante){
         Validacion_Datos vd=new Validacion_Datos();
-        String nombreAux = estudiante.getNombre();
-        if(!vd.validacion_nombre(nombreAux)){
+        if(!vd.validacion_nombre(estudiante.getNombre())){
             System.out.println("Su nombre no es válido");
-            aprobado = false;
-            return aprobado;
+            return aprobado = false;
         }
-        String cedulaAux = estudiante.getCedula();
-        if(!vd.validacion_cedula(cedulaAux)){
+        if(!vd.validacion_cedula(estudiante.getCedula())){
             System.out.println("Su cédula no es valida");
-            aprobado = false;
-            return aprobado;
+            return aprobado = false;
         }
-        String correoAux = estudiante.getCorreo();
-        if(!vd.validacion_correo(correoAux)){
+        if(!vd.validacion_correo(estudiante.getCorreo())){
             System.out.println("Su correo no es válido");
-            aprobado = false;
-            return aprobado;
+            return aprobado = false; 
         }
-        aprobado = true;
-        return aprobado;
+        return aprobado = true;
     }
 }
