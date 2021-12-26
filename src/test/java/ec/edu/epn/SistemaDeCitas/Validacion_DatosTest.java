@@ -84,4 +84,12 @@ public class Validacion_DatosTest {
                 .thenReturn(new LoginResponse(LoginResponse.LoginStatus.ERROR));
         assertFalse(validation.log_in("1457846521","asdefgv.ed.@ec"));
     }
+        @Test(timeout = 970)
+    public void given_nombre_and_contrasenia_when_validation_then_timeout(){
+        Login_Sistema_EPN loginSistemaEpn = Mockito.mock(Login_Sistema_EPN.class);
+        LoginValidation validation = new LoginValidation(loginSistemaEpn);
+        Mockito.when(loginSistemaEpn.requestLogin(Mockito.any()))
+                .thenReturn(new LoginResponse(LoginResponse.LoginStatus.OK));
+        assertTrue(validation.log_in("1722067574","francisco.flores@epn.edu.ec"));
+    }
 }
