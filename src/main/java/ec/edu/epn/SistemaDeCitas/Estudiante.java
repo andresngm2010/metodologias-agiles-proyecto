@@ -16,6 +16,10 @@ public class Estudiante {
         System.out.println("Sea bienvenido: "+this.nombre);
     }
 
+    public void salirDelSistema(){
+        System.out.println("---------------Salida del Sistema---------------");
+    }
+
     public String getNombre() {
         return nombre;
     }

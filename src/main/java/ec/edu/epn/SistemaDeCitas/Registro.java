@@ -69,13 +69,17 @@ public class Registro {
         });
     }
 
-    public void isAprobado(String usuario, String contraseña) {
+    public boolean isAprobado(String usuario, String contraseña) {
+        aprobado=false;
         listaEstudiantesRegistrados.forEach((misDatos)->{
-            if(misDatos.getCorreo().equals(usuario) && misDatos.getContraseña().equals(contraseña) )
-                System.out.println("Welcome al sistema de citas ");
-            else
-                System.out.println("Usuario invalido ");
+            final boolean verificarCorreo = misDatos.getCorreo().equals(usuario);
+            final boolean verificarContraseña = misDatos.getContraseña().equals(contraseña);
+            if(verificarCorreo && verificarContraseña) {
+                System.out.println("¡¡¡ Login realizado satisfactoriamente !!!");
+                misDatos.darBienvenida();
+                aprobado=true;
+            }
         });
-
+        return aprobado;
     }
 }

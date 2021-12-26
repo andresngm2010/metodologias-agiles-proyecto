@@ -50,4 +50,12 @@ public class Registro_ValidarEstudiantes_ParametersTest {
         listaEstudiantes_actual = r.listaEstudiantesRegistrados;
         assertEquals(listaEstudiantes_expected, listaEstudiantes_actual);
     }
+    @Test
+    public void given_estudiantes_when_login_then_aprove_login(){
+        r.añadirAListaEstudiantes(estudiante);
+        LoginRequest lr = new LoginRequest();
+        lr.setCorreo(estudiante.getCorreo());
+        lr.setContraseña(estudiante.getContraseña());
+        assertTrue(r.isAprobado(lr.getCorreo(), lr.getContraseña()));
+    }
 }

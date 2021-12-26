@@ -32,6 +32,5 @@ public class LoginRequest {
         correo = sca.nextLine();
         System.out.println("Ingrese su contraseña");
         contraseña = sca.nextLine();
-
     }
 }
