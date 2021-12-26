@@ -68,6 +68,17 @@ public class Validacion_DatosTest {
     }
 
     @Test
+    public void given_correo_when_validation_then_notnull(){
+        Estudiante e = new Estudiante();
+        Validacion_Datos vd = new Validacion_Datos();
+        e.setCorreo("fernando.ponce@epn.edu.ec");
+        vd.setCorreo(e.getCorreo());
+        String object = vd.getCorreo();
+        vd.validacion_correo(object);
+        assertNotNull(object);
+    }
+
+    @Test
     public void given_nombre_and_contrasenia_when_is_correct_then_ok(){
         Login_Sistema_EPN loginSistemaEpn = Mockito.mock(Login_Sistema_EPN.class);
         LoginValidation validation = new LoginValidation(loginSistemaEpn);
