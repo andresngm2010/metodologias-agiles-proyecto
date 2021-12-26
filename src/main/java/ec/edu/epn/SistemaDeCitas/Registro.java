@@ -60,4 +60,22 @@ public class Registro {
         }
         return aprobado = true;
     }
+
+    public void imprimirLista(){
+        listaEstudiantesRegistrados.forEach((misDatos)->{
+            System.out.println(misDatos.getCedula());
+            System.out.println(misDatos.getContraseña());
+            System.out.println(misDatos.getCorreo());
+        });
+    }
+
+    public void isAprobado(String usuario, String contraseña) {
+        listaEstudiantesRegistrados.forEach((misDatos)->{
+            if(misDatos.getCorreo().equals(usuario) && misDatos.getContraseña().equals(contraseña) )
+                System.out.println("Welcome al sistema de citas ");
+            else
+                System.out.println("Usuario invalido ");
+        });
+
+    }
 }
